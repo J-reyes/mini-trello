@@ -40,7 +40,6 @@ const INITIAL_COLUMNS: Column[] = [
 function App() {
   const [columns, setColumns] = useState<Column[]>(INITIAL_COLUMNS);
 
-
   return (
     <>
       <Board columns={columns} />
