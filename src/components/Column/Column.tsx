@@ -1,14 +1,16 @@
 import type { Card as CardType, ColumnId } from '../../types';
 import Card from '../Card/Card';
 import styles from './Column.module.css';
+import AddCardForm from '../AddCardForm/AddCardForm';
 
 interface ColumnProps {
     id: ColumnId;
     title: string;
     cards: CardType[];
+    onAddCard: (title: string) => void;
 }
 
-export default function Column({ id: _id, title, cards }: ColumnProps) {
+export default function Column({ id: _id, title, cards, onAddCard }: ColumnProps) {
     return (
         <div className={styles.column}>
             <h2>{title}</h2>
@@ -17,6 +19,7 @@ export default function Column({ id: _id, title, cards }: ColumnProps) {
                     return <Card key={card.id} id={card.id} title={card.title} />
                 })}
             </ul>
+            <AddCardForm onAddCard={(title) => onAddCard(title)} />
         </div>
     )
 }

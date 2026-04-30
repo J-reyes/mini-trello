@@ -1,37 +1,37 @@
-import './App.css'
-import { useState } from 'react';
-import type { Column } from './types';
+import "./App.css";
+import { useState } from "react";
+import type { Column, ColumnId } from "./types";
 
-import Board from './components/Board/Board';
+import Board from "./components/Board/Board";
 
 const INITIAL_COLUMNS: Column[] = [
   {
-    id: 'todo',
-    title: 'Todo',
+    id: "todo",
+    title: "Todo",
     cards: [
       {
-        id: '1',
-        title: 'Card 1',
+        id: "1",
+        title: "Card 1",
       },
     ],
   },
   {
-    id: 'inProgress',
-    title: 'In Progress',
+    id: "inProgress",
+    title: "In Progress",
     cards: [
       {
-        id: '2',
-        title: 'Card 2',
-      }
+        id: "2",
+        title: "Card 2",
+      },
     ],
   },
   {
-    id: 'done',
-    title: 'Done',
+    id: "done",
+    title: "Done",
     cards: [
       {
-        id: '3',
-        title: 'Card 3',
+        id: "3",
+        title: "Card 3",
       },
     ],
   },
@@ -40,11 +40,24 @@ const INITIAL_COLUMNS: Column[] = [
 function App() {
   const [columns, setColumns] = useState<Column[]>(INITIAL_COLUMNS);
 
+  const handleAddCard = (columnId: ColumnId, title: string) => {
+    setColumns((prev) =>
+      prev.map((column) =>
+        column.id === columnId
+          ? {
+              ...column,
+              cards: [...column.cards, { id: crypto.randomUUID(), title }],
+            }
+          : column,
+      ),
+    );
+  };
+
   return (
     <>
-      <Board columns={columns} />
+      <Board columns={columns} onAddCard={handleAddCard} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
