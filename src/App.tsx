@@ -53,9 +53,22 @@ function App() {
     );
   };
 
+  const handleDeleteCard = (columnId: ColumnId, cardId: string) => {
+    setColumns((prev) =>
+      prev.map((column) =>
+        column.id === columnId
+          ? {
+              ...column,
+              cards: column.cards.filter((card) => card.id !== cardId),
+            }
+          : column,
+      ),
+    );
+  };
+
   return (
     <>
-      <Board columns={columns} onAddCard={handleAddCard} />
+      <Board columns={columns} onAddCard={handleAddCard} onDeleteCard={handleDeleteCard} />
     </>
   );
 }

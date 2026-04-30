@@ -6,9 +6,10 @@ import styles from "./Board.module.css";
 interface BoardProps {
   columns: ColumnType[];
   onAddCard: (columnId: ColumnId, title: string) => void;
+  onDeleteCard: (columnId: ColumnId, cardId: string) => void;
 }
 
-export default function Board({ columns, onAddCard}: BoardProps) {
+export default function Board({ columns, onAddCard, onDeleteCard}: BoardProps) {
   return (
     <div className={styles.board}>
       {columns.map((column) => (
@@ -18,6 +19,7 @@ export default function Board({ columns, onAddCard}: BoardProps) {
           title={column.title}
           cards={column.cards}
           onAddCard={(title) => onAddCard(column.id, title)}
+          onDeleteCard={(cardId) => onDeleteCard(column.id, cardId)}
         />
       ))}
     </div>
