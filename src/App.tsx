@@ -66,6 +66,32 @@ function App() {
     );
   };
 
+  const handleMoveCard = (cardId: string, sourceColumnId: ColumnId, targetColumnId: ColumnId) => {
+    setColumns((prev) => {
+      const sourceColumn = prev.find((column) => column.id === sourceColumnId);
+      const card = sourceColumn?.cards.find((card) => card.id === cardId);
+      if (!card) return prev;
+
+      return prev.map((column) => {
+        if (column.id === sourceColumnId) {
+          return {
+            ...column,
+            cards: column.cards.filter((card) => card.id !== cardId),
+          };
+        }
+        if (column.id === targetColumnId) {
+          return {
+            ...column,
+            cards: [...column.cards, card],
+          };
+        }
+        return column;
+      });
+    })
+    
+    
+  }
+
   return (
     <>
       <Board columns={columns} onAddCard={handleAddCard} onDeleteCard={handleDeleteCard} />
