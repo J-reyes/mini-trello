@@ -1,8 +1,38 @@
-*, *::before, *::after {
+:root {
+  --bg: #fdf6f0;
+  --surface: #ffffff;
+  --text: #3d3a4e;
+  --text-muted: #8a8696;
+  --border: rgba(61, 58, 78, 0.08);
+  --shadow: 0 4px 16px rgba(61, 58, 78, 0.08);
+  --shadow-hover: 0 6px 20px rgba(61, 58, 78, 0.12);
+
+  --todo: #fcd5ce;
+  --todo-accent: #e8867a;
+  --inprogress: #cddafd;
+  --inprogress-accent: #6f8ad6;
+  --done: #d4e7c5;
+  --done-accent: #6fa05f;
+
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+button {
+  font-family: inherit;
 }

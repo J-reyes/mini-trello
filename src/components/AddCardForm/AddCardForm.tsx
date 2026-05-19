@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./AddCardForm.module.css";
 
 interface AddCardFormProps {
   onAddCard: (title: string) => void;
@@ -7,7 +8,6 @@ interface AddCardFormProps {
 export default function AddCardForm({ onAddCard }: AddCardFormProps) {
   const [title, setTitle] = useState("");
 
-
   function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
     if (title.trim() === "") return;
@@ -15,11 +15,17 @@ export default function AddCardForm({ onAddCard }: AddCardFormProps) {
     setTitle("");
   }
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}/>
-        <button type="submit">Add Card</button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <input
+        type="text"
+        placeholder="Add a card..."
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        className={styles.input}
+      />
+      <button type="submit" className={styles.button}>
+        Add Card
+      </button>
+    </form>
   );
 }

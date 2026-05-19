@@ -9,31 +9,19 @@ const INITIAL_COLUMNS: Column[] = [
     id: "todo",
     title: "Todo",
     cards: [
-      {
-        id: "1",
-        title: "Card 1",
-      },
+      { id: "1", title: "Wireframe the new dashboard" },
+      { id: "2", title: "Write release notes for v1.2" },
     ],
   },
   {
     id: "inProgress",
     title: "In Progress",
-    cards: [
-      {
-        id: "2",
-        title: "Card 2",
-      },
-    ],
+    cards: [{ id: "3", title: "Refactor auth middleware" }],
   },
   {
     id: "done",
     title: "Done",
-    cards: [
-      {
-        id: "3",
-        title: "Card 3",
-      },
-    ],
+    cards: [{ id: "4", title: "Set up CI pipeline" }],
   },
 ];
 
@@ -95,14 +83,16 @@ function App() {
   };
 
   return (
-    <>
+    <div className="app">
+      <h1>Mini Trello</h1>
+      <p>A simple board for tracking work in progress.</p>
       <Board
         columns={columns}
         onAddCard={handleAddCard}
         onDeleteCard={handleDeleteCard}
         onMoveCard={handleMoveCard}
       />
-    </>
+    </div>
   );
 }
 

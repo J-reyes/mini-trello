@@ -27,7 +27,7 @@ export default function Column({
   const rightColumnId: ColumnId | undefined = idx < COLUMN_ORDER.length - 1 ? COLUMN_ORDER[idx + 1] : undefined;
 
   return (
-    <div className={styles.column}>
+    <div className={styles.column} data-id={id}>
       <h2>{title}</h2>
       <ul>
         {cards.map((card) => {
