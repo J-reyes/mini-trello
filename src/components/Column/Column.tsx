@@ -28,7 +28,7 @@ export default function Column({
 
   return (
     <div className={styles.column} data-id={id}>
-      <h2>{title}</h2>
+      <h2>{title} <span className={styles.cardCount}>{cards.length}</span></h2>
       <ul>
         {cards.map((card) => {
           return (
