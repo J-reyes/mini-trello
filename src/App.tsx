@@ -54,6 +54,25 @@ function App() {
     );
   };
 
+  const handleEditCard = (
+    columnId: ColumnId,
+    cardId: string,
+    newTitle: string,
+  ) => {
+    setColumns((prev) =>
+      prev.map((column) =>
+        column.id === columnId
+          ? {
+              ...column,
+              cards: column.cards.map((card) =>
+                card.id === cardId ? { ...card, title: newTitle } : card,
+              ),
+            }
+          : column,
+      ),
+    );
+  };
+
   const handleMoveCard = (
     cardId: string,
     sourceColumnId: ColumnId,
@@ -91,6 +110,7 @@ function App() {
         onAddCard={handleAddCard}
         onDeleteCard={handleDeleteCard}
         onMoveCard={handleMoveCard}
+        onEditCard={handleEditCard}
       />
     </div>
   );

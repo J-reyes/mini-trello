@@ -11,6 +11,7 @@ interface ColumnProps {
   onAddCard: (title: string) => void;
   onDeleteCard: (cardId: string) => void;
   onMoveCard: (cardId: string, targetColumnId: ColumnId) => void;
+  onEditCard: (cardId: string, newTitle: string) => void;
 }
 
 export default function Column({
@@ -20,6 +21,7 @@ export default function Column({
   onAddCard,
   onDeleteCard,
   onMoveCard,
+  onEditCard,
 }: ColumnProps) {
 
   const idx = COLUMN_ORDER.indexOf(id);
@@ -39,6 +41,7 @@ export default function Column({
               onDeleteCard={onDeleteCard}
               onMoveLeft={leftColumnId ? () => onMoveCard(card.id, leftColumnId) : undefined}
               onMoveRight={rightColumnId ? () => onMoveCard(card.id, rightColumnId) : undefined}
+              onEditCard={(newTitle) => onEditCard(card.id, newTitle)}
             />
           );
         })}
